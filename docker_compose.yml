@@ -1,0 +1,23 @@
+mysql_db:
+   image: mysql:latest
+   environment: 
+     - MYSQL_ROOT_PASSWORD=root
+     - MYSQL_DATABASE=openpkw
+     - MYSQL_USER=openpkw
+     - MYSQL_PASSWORD=openpkw
+   command: mysqld --character-set-server=utf8 --collation-server=utf8_polish_ci
+   ports: 
+     - 3306:3306 
+
+openpkw_weryfikator:
+   image: openpkw/weryfikator:latest
+   environment:
+     - OPENPKW_MYSQL_URI=mysql_db
+     - OPENPKW_MYSQL_PORT=3306
+     - OPENPKW_MYSQL_DATABASE=openpkw
+     - OPENPKW_MYSQL_USER=openpkw
+     - OPENPKW_MYSQL_PASSWORD=openpkw
+   ports: 
+     - 8080:8080
+   links:
+     - mysql_db

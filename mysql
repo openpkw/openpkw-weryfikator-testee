@@ -1,0 +1,1 @@
+SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'openpkw'; -h 127.0.0.1 -u openpkw --password=openpkw
